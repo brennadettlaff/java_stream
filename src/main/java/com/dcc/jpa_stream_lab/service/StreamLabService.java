@@ -46,7 +46,7 @@ public class StreamLabService {
         // Return the COUNT of all the users from the User table.
         // You MUST use a .stream(), don't listen to the squiggle here!
         // Remember yellow squiggles are warnings and can be ignored.
-    	return 0;
+    	return users.findAll().stream().count();
     }
 
     public List<Product> RDemoTwo()
