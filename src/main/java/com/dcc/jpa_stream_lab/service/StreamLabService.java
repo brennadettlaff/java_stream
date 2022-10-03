@@ -59,7 +59,7 @@ public class StreamLabService {
     {
         // Write a query that gets each product whose price is less than or equal to $100.
         // Return the list
-        return null;
+        return products.findAll().stream().filter(p -> p.getPrice() <= 100).toList();
     }
 
     public List<Product> RProblemThree()
