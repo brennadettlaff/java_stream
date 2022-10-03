@@ -76,7 +76,7 @@ public class StreamLabService {
         // Return the list
         // Research 'java create specific date' and 'java compare dates'
         // You may need to use the helper classes imported above!
-    	
+//        List<User> beforeMembers = users.findAll().stream().filter((p)->p.getRegistrationDate().before(2020-01-20T00:00:00.000+00:00).toList())
         return null;
     }
 
