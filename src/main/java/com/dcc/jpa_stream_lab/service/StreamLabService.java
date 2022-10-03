@@ -51,7 +51,7 @@ public class StreamLabService {
 
     public List<Product> RDemoTwo()
     {
-        // This query will get each product whose price is greater than $150.
+        // This query will get each product whose price is greater than $150
     	return products.findAll().stream().filter(p -> p.getPrice() > 150).toList();
     }
 
@@ -103,8 +103,9 @@ public class StreamLabService {
     {
         // Write a query that retrieves all of the products in the shopping cart of the user who has the email "afton@gmail.com".
         // Return the list
-
-    	return null;
+        ShoppingcartItem customerCart = shoppingcartitems.findAll().stream().filter(r-> r.getUser().getEmail().equals("afton@gmail.com")).findFirst().orElse(null);
+        List<Product> productsWithEmail = products.findAll().stream().filter((p)->p.getShoppingcartItems().contains(customerCart)).toList();
+    	return productsWithEmail;
     }
 
     public long RProblemSeven()
