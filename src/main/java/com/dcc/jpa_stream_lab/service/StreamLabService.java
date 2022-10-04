@@ -140,8 +140,12 @@ public class StreamLabService {
     {
         // Write a query that retrieves all of the products in the shopping cart of users who have the role of "Employee".
     	// Return the list
-//        ShoppingcartItem employeeCarts = shoppingcartitems.findById();
-    	return null;
+
+        Role employeeUsers = roles.findAll().stream().filter(r->r.getUsers().equals("employee")).findFirst().orElse(null);
+        List<ShoppingcartItem> employeeBasket = shoppingcartitems.findAll().stream().filter(s->s.getUser().equals(employeeUsers)).toList();
+        List<Product> employeeItems = products.findAll().stream().filter((p)->p.getShoppingcartItems().contains(employeeBasket)).toList();
+
+    	return employeeItems;
     }
 
     // <><><><><><><><> CUD (Create, Update, Delete) Actions <><><><><><><><><>
