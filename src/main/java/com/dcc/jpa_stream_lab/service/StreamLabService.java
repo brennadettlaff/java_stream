@@ -167,8 +167,12 @@ public class StreamLabService {
         // Create a new Product object and add that product to the Products table.
         // Return the product
     	
-
-    	return null;
+        Product newProduct = new Product();
+        newProduct.setDescription("Contigo Blue 24oz Waterbottle with Lid and Straw");
+        newProduct.setName("Contigo 24oz Waterbottle");
+        newProduct.setPrice(9);
+        products.save(newProduct);
+    	return newProduct;
 
     }
 
