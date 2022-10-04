@@ -128,10 +128,11 @@ public class StreamLabService {
     {
         // Write a query that retrieves all of the products in the shopping cart of the user who has the email "oda@gmail.com" and returns the sum of all of the products prices.
     	// Remember to break the problem down and take it one step at a time!
-//        ShoppingcartItem odaCart = shoppingcartitems.findAll().stream().filter(r->r.getUser().getEmail().equals("oda@gmail.com")).findFirst().orElse(null);
-//        List<Product> odaCartProducts = products.findAll().stream().filter((p)->p.getShoppingcartItems().contains(odaCart));
-//        odaCartCost = odaCartProducts.addAll();
-    	return 0;
+        ShoppingcartItem odaCart = shoppingcartitems.findAll().stream().filter(r->r.getUser().getEmail().equals("oda@gmail.com")).findFirst().orElse(null);
+        List<Product> odaCartProducts = products.findAll().stream().filter((p)->p.getShoppingcartItems().contains(odaCart)).toList();
+        List<Integer> odaCartPrices = odaCartProducts.stream().map(u -> u.getPrice()).toList();
+        Integer sum = odaCartPrices.stream().reduce(0,(a,b)-> a+b);
+    	return sum;
 
     }
 
