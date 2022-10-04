@@ -91,7 +91,17 @@ public class StreamLabService {
         // Write a query that gets all of the users who registered AFTER 2016 and BEFORE 2018
         // Return the list
 
-        return null;
+        Calendar a = Calendar.getInstance();
+        Calendar b = Calendar.getInstance();
+        a.set(2016,1,1,1,0,0);
+        b.set(2018,1,1,1,0,0);
+
+        Date d = a.getTime();
+        Date e = b.getTime();
+        List<User> betweenMembers = users.findAll().stream().filter((p)->p.getRegistrationDate().before(e)).toList();
+        List getMembers = betweenMembers.stream().filter((p)->p.getRegistrationDate().after(d)).toList();
+
+        return getMembers;
     }
 
     // <><><><><><><><> R Actions (Read) with Foreign Keys <><><><><><><><><>
