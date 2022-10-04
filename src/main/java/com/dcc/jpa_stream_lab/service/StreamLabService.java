@@ -1,5 +1,6 @@
 package com.dcc.jpa_stream_lab.service;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -76,8 +77,13 @@ public class StreamLabService {
         // Return the list
         // Research 'java create specific date' and 'java compare dates'
         // You may need to use the helper classes imported above!
-//        List<User> beforeMembers = users.findAll().stream().filter((p)->p.getRegistrationDate().before(2020-01-20T00:00:00.000+00:00).toList())
-        return null;
+
+        Calendar c = Calendar.getInstance();
+        c.set(2016,1,1,1,0,0);
+        Date d = c.getTime();
+        List<User> beforeMemebers = users.findAll().stream().filter((p)->p.getRegistrationDate().before(d)).toList();
+
+        return beforeMemebers;
     }
 
     public List<User> RProblemFive()
@@ -123,7 +129,7 @@ public class StreamLabService {
     {
         // Write a query that retrieves all of the products in the shopping cart of users who have the role of "Employee".
     	// Return the list
-        
+//        ShoppingcartItem employeeCarts = shoppingcartitems.findById();
     	return null;
     }
 
