@@ -141,9 +141,9 @@ public class StreamLabService {
         // Write a query that retrieves all of the products in the shopping cart of users who have the role of "Employee".
     	// Return the list
 
-        Role employeeUsers = roles.findAll().stream().filter(r->r.getUsers().equals("employee")).findFirst().orElse(null);
-        List<ShoppingcartItem> employeeBasket = shoppingcartitems.findAll().stream().filter(s->s.getUser().equals(employeeUsers)).toList();
-        List<Product> employeeItems = products.findAll().stream().filter((p)->p.getShoppingcartItems().contains(employeeBasket)).toList();
+        Role employeeUsers = roles.findAll().stream().filter(r->r.getName().equals("Employee")).findFirst().orElse(null);
+        List<ShoppingcartItem> employeeBasket = shoppingcartitems.findAll().stream().filter(s->s.getUser().getRoles().contains(employeeUsers)).toList();
+        List<Product> employeeItems = employeeBasket.stream().map((p)->p.getProduct()).toList();
 
     	return employeeItems;
     }
@@ -190,6 +190,14 @@ public class StreamLabService {
     	// Create a new ShoppingCartItem to represent the new product you created being added to the new User you created's shopping cart.
         // Add the product you created to the user we created in the ShoppingCart junction table.
         // Return the ShoppingcartItem
+//        ShoppingcartItem newShoppingcartItem = new ShoppingcartItem();
+//        newShoppingcartItem.setQuantity(9);
+//
+//        User david = users.findAll().stream().filter(u -> u.getEmail().equals("david@gmail.com")).findFirst().orElse(null);
+
+//        shoppingcartitems.save(newShoppingcartItem);
+
+
 
     	return null;
     	
