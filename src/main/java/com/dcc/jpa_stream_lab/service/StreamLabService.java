@@ -227,8 +227,13 @@ public class StreamLabService {
     {
         // Change the role of the user we created to "Employee"
         // HINT: You need to delete the existing role relationship and then create a new UserRole object and add it to the UserRoles table
+        Role customerStatus = roles.findAll().stream().filter((r)->r.getName().equals("Customer")).findFirst().orElse(null);
+        Role employeeStatus = roles.findAll().stream().filter((r)->r.getName().equals("Employee")).findFirst().orElse(null);
+        User userId = users.findAll().stream().filter((u)->u.getEmail().equals("david@gmail.com")).findFirst().orElse(null);
+        userId.removeRole(customerStatus);
+        userId.addRole(employeeStatus);
 
-    	return null;
+        return userId;
     }
 
     //BONUS:
