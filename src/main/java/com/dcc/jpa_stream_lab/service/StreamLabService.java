@@ -219,7 +219,7 @@ public class StreamLabService {
         // Update the price of the product you created to a different value.
         // Return the updated product
         Product product = products.findAll().stream().filter(p->p.getName().equals("Contigo 24oz Waterbottle")).findFirst().orElse(null);
-        product.setName("Blue Contigo 24oz Waterbottle");
+        product.setPrice(16);
     	return product;
     }
 
