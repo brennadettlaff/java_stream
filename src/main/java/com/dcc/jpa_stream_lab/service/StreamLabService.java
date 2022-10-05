@@ -190,16 +190,17 @@ public class StreamLabService {
     	// Create a new ShoppingCartItem to represent the new product you created being added to the new User you created's shopping cart.
         // Add the product you created to the user we created in the ShoppingCart junction table.
         // Return the ShoppingcartItem
-//        ShoppingcartItem newShoppingcartItem = new ShoppingcartItem();
-//        newShoppingcartItem.setQuantity(9);
-//
-//        User david = users.findAll().stream().filter(u -> u.getEmail().equals("david@gmail.com")).findFirst().orElse(null);
+        ShoppingcartItem newShoppingcartItem = new ShoppingcartItem();
+        newShoppingcartItem.setQuantity(9);
+        shoppingcartitems.save(newShoppingcartItem);
 
-//        shoppingcartitems.save(newShoppingcartItem);
+        User david = users.findAll().stream().filter(u -> u.getEmail().equals("david@gmail.com")).findFirst().orElse(null);
+        Product waterbottle = products.findAll().stream().filter(p->p.getName().equals("Contigo 24oz Waterbottle")).findFirst().orElse(null);
 
+        waterbottle.addShoppingcartItem(newShoppingcartItem);
+        david.addShoppingcartItem(newShoppingcartItem);
 
-
-    	return null;
+    	return newShoppingcartItem;
     	
     }
 
@@ -217,7 +218,9 @@ public class StreamLabService {
     {
         // Update the price of the product you created to a different value.
         // Return the updated product
-    	return null;
+        Product product = products.findAll().stream().filter(p->p.getName().equals("Contigo 24oz Waterbottle")).findFirst().orElse(null);
+        product.setName("Blue Contigo 24oz Waterbottle");
+    	return product;
     }
 
     public User UProblemTwo()
